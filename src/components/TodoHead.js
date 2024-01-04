@@ -3,6 +3,7 @@ import styled from "styled-components";
     const TodoHeadBlock = styled.div`
         padding-top: 48px;
         padding-left: 15px;
+        padding-bottom: 20px;
         border-bottom: 1px solid #e9ecef;
         h1 {
             margin: 0;
