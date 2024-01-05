@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { FaRegCheckCircle,FaCheckCircle} from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { useTodoDispatch } from "../contexts/TodoContext";
+import { type } from "@testing-library/user-event/dist/type";
 
 const Remove = styled.div`
   display: flex;
@@ -26,7 +28,11 @@ const Text = styled.div`
     }
 `;
 
-export default function TodoItem( {id,done,text} ){
+function TodoItem( {id,done,text} ){
+    const dispatch = useTodoDispatch();
+    const onToggle = () => dispatch({type:'TOGGLE', id});
+    const onRemove = () => dispatch({type:'REMOVE',id});
+
     const mdDoneStyle = {
         cursor: "pointer"
     };
@@ -45,11 +51,12 @@ export default function TodoItem( {id,done,text} ){
 
     return(
         <TodoItemBlock>
-            {done ? <FaCheckCircle style={mdDoneStyle} size={20} /> : <FaRegCheckCircle style={mdDoneStyle} size={20}/>}
+            {done ? <FaCheckCircle style={mdDoneStyle} size={20} onClick={onToggle}/> : <FaRegCheckCircle style={mdDoneStyle} size={20} onClick={onToggle}/>}
             <Text done={done}>{text}</Text>
             <Remove>
-                <MdDelete />
+                <MdDelete onClick={onRemove}/>
             </Remove>
         </TodoItemBlock>
     )
 }
+export default React.memo(TodoItem);
