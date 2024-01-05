@@ -5,12 +5,12 @@ import { MdAdd } from 'react-icons/md';
 const CircleButton = styled.button`
   background: #38d9a9;
   &:hover {
-    background: #63e6be;
+    background: #63ddbe;
   }
   &:active {
-    background: #20c997;
+    background: #20c955;
   }
-
+  
   z-index: 5;
   cursor: pointer;
   width: 80px;
@@ -30,6 +30,7 @@ const CircleButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  
 
   transition: 0.125s all ease-in;
   ${props =>
